@@ -318,10 +318,10 @@ html.fly .fly-back { order: -2; }
 html.fly footer { display: none; }
 html.fly.fly-home footer { display: none; }
 .flyer { background: var(--hero-bg); color: var(--hero-ink); min-height: calc(100svh - 64px); }
-.flyer .wrap { display: flex; flex-direction: column; gap: 1.4rem; padding-block: 1.8rem 1.4rem; min-height: calc(100svh - 64px); }
+.flyer .wrap { display: flex; flex-direction: column; gap: 1.4rem; padding-block: 1.2rem 1.4rem; min-height: calc(100svh - 64px); }
 .fly-head { text-align: center; }
-.fly-logo { display: inline-grid; place-items: center; width: 84px; height: 84px; border-radius: 22px; background: rgba(255,255,255,.07); color: #fff; }
-.flyer h1 { color: #fff; font-size: 1.55rem; line-height: 1.2; margin: .9rem 0 .35rem; letter-spacing: -.01em; }
+.fly-logo { display: inline-grid; place-items: center; width: 64px; height: 64px; border-radius: 18px; background: rgba(255,255,255,.07); color: #fff; }
+.flyer h1 { color: #fff; font-size: 1.4rem; line-height: 1.2; margin: .6rem 0 .3rem; letter-spacing: -.01em; }
 .fly-sub { margin: 0; color: var(--lime); font-weight: 600; font-size: .95rem; }
 .fly-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; counter-reset: fly; }
 .fly-list a { display: grid; grid-template-columns: 2.4rem 1fr auto; align-items: center; column-gap: .5rem; padding: .85rem .9rem; border-radius: 14px; background: #fff; color: #15211f; text-decoration: none; box-shadow: 0 6px 18px rgba(0,0,0,.18); counter-increment: fly; min-height: 64px; }
@@ -329,10 +329,10 @@ html.fly.fly-home footer { display: none; }
 .fly-list b { font-family: var(--f-display); font-size: 1.05rem; color: #0b2d2b; }
 .fly-list span { grid-column: 2; font-size: .84rem; color: #4a5a56; line-height: 1.3; }
 .fly-list .fly-go { grid-column: 3; grid-row: 1 / span 2; color: #00995d; }
-.fly-list li:first-child a, .fly-list li:nth-child(2) a { background: var(--lime); }
-.fly-list li:first-child a::before, .fly-list li:nth-child(2) a::before { background: rgba(0,78,76,.12); color: #004e4c; }
-.fly-list li:first-child span, .fly-list li:nth-child(2) span { color: #24403c; }
-.fly-list li:first-child .fly-go, .fly-list li:nth-child(2) .fly-go { color: #004e4c; }
+.fly-list:not(.fly-more) li a { background: var(--lime); }
+.fly-list:not(.fly-more) li a::before { background: rgba(0,78,76,.12); color: #004e4c; }
+.fly-list:not(.fly-more) li span { color: #24403c; }
+.fly-list:not(.fly-more) li .fly-go { color: #004e4c; }
 .fly-list a:active { transform: scale(.985); }
 .fly-foot { margin: auto 0 0; text-align: center; font-size: .76rem; color: var(--hero-ink-2, #b9d3c9); }
 html.fly .fly-back.fly-on { display: block; position: sticky; top: calc(64px + env(safe-area-inset-top, 0px)); z-index: 15; background: var(--bg); border-bottom: 1px solid var(--line); }
@@ -340,3 +340,13 @@ html.fly .fly-back.fly-on { display: block; position: sticky; top: calc(64px + e
 .fly-back a { display: inline-flex; align-items: center; gap: .3rem; font-weight: 600; font-size: .92rem; color: var(--heading); text-decoration: none; padding: .45rem .75rem .45rem .5rem; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); }
 .fly-back span { font-size: .86rem; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 @media (prefers-reduced-motion: reduce) { .fly-list a:active { transform: none; } }
+.fly-more { counter-reset: none; }
+.fly-quick { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+.fly-label { grid-column: 1 / -1; margin: .2rem 0 -.1rem; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--lime); }
+.fly-quick a { display: flex; flex-direction: column; gap: .2rem; padding: .85rem .9rem .95rem; border-radius: 14px; text-decoration: none; color: #fff; background: rgba(255,255,255,.07); border: 1.5px solid rgba(177,211,75,.45); min-height: 64px; }
+.fly-quick a:active { transform: scale(.985); background: rgba(255,255,255,.11); }
+.fly-quick .fly-ic { width: 2.2rem; height: 2.2rem; border-radius: 10px; display: grid; place-items: center; background: rgba(177,211,75,.16); color: var(--lime); margin-bottom: .35rem; }
+.fly-quick b { font-family: var(--f-display); font-size: 1.02rem; }
+.fly-quick span:not(.fly-ic) { font-size: .8rem; line-height: 1.3; color: var(--hero-ink-2, #b9d3c9); }
+@media (max-width: 340px) { .fly-quick span:not(.fly-ic) { display: none; } }
+@media (prefers-reduced-motion: reduce) { .fly-quick a:active { transform: none; } }
