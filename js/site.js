@@ -29,6 +29,7 @@
     problema: { t: 'O problema', s: ['problema', 'impacto', 'evidencias'] },
     como: { t: 'Como funciona', s: ['como'] },
     perguntas: { t: 'Perguntas', s: ['perguntas', 'valor', 'roadmap', 'pedido'] },
+    equipe: { t: 'Quem somos', s: ['equipe'] },
     glossario: { t: 'Glossário', s: ['glossario'] }
   };
   var DONO = {};

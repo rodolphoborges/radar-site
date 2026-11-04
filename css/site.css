@@ -350,3 +350,12 @@ html.fly .fly-back.fly-on { display: block; position: sticky; top: calc(64px + e
 .fly-quick span:not(.fly-ic) { font-size: .8rem; line-height: 1.3; color: var(--hero-ink-2, #b9d3c9); }
 @media (max-width: 340px) { .fly-quick span:not(.fly-ic) { display: none; } }
 @media (prefers-reduced-motion: reduce) { .fly-quick a:active { transform: none; } }
+
+/* ---------- Quem somos ---------- */
+.team { grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+.member { text-align: center; padding-block: 1.6rem 1.4rem; }
+.member .avatar { width: 84px; height: 84px; border-radius: 50%; margin: 0 auto .9rem; display: grid; place-items: center; object-fit: cover; background: var(--brand); color: #fff; font: 700 1.5rem var(--f-display); border: 3px solid var(--lime); }
+.member h3 { font-size: 1.08rem; margin: 0 0 .15rem; color: var(--heading); }
+.member .role { margin: 0 0 .6rem; font-size: .85rem; font-weight: 600; color: var(--accent-ink); }
+.member p:last-child { margin: 0; font-size: .92rem; color: var(--ink-2); }
+@media (max-width: 760px) { .team { grid-template-columns: 1fr 1fr; gap: .7rem; } .member { padding: 1.1rem .8rem; } .member .avatar { width: 64px; height: 64px; font-size: 1.15rem; } .member p:last-child { font-size: .84rem; } }
