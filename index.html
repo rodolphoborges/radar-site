@@ -319,8 +319,8 @@
       <ol class="road">
         <li class="done reveal"><span class="ph">Fase 0</span><span class="tag t-ok">Concluída</span><h3>Descoberta e simulação</h3><ul><li>Entrevistas e quantificação da dor</li><li>Regras de negócio documentadas</li><li>Ciclo mensal simulado, com dados fictícios</li></ul></li>
         <li class="reveal"><span class="ph">Fase 1</span><span class="tag t-warn">Próxima</span><h3>Validar com dados reais</h3><ul><li>Rodar sobre as planilhas reais de consolidação</li><li>Medir a linha de base por tipo de divergência</li><li>Validar limites e regras com a analista</li></ul></li>
-        <li class="reveal"><span class="ph">Fase 2</span><span class="tag t-neutral">Planejada</span><h3>Piloto em ciclo real</h3><ul><li>Um ou mais meses de operação em paralelo à planilha</li><li>Decisão de tecnologia e armazenamento comum</li><li>Metas numéricas de sucesso do MVP</li></ul></li>
-        <li class="reveal"><span class="ph">Fase 3</span><span class="tag t-neutral">Planejada</span><h3>Escalar e integrar</h3><ul><li>Gate SIB automático com a base de vidas</li><li>Geração dos XMLs RPI e RPA</li><li>Acesso com login e histórico compartilhado</li></ul></li>
+        <li class="reveal"><span class="ph">Fase 2</span><span class="tag t-neutral">Planejada</span><h3>Piloto em ciclo real</h3><ul><li>Um ou mais meses de operação em paralelo à planilha</li><li>Na infraestrutura da operadora: login corporativo, histórico e evidências guardados</li><li>Metas numéricas de sucesso do MVP</li></ul></li>
+        <li class="reveal"><span class="ph">Fase 3</span><span class="tag t-neutral">Planejada</span><h3>Escalar e integrar</h3><ul><li>Gate SIB automático com a base de vidas</li><li>Geração dos XMLs RPI e RPA</li><li>Verificação direto no TOTVS, só em leitura</li></ul></li>
       </ol>
     </div>
   </section>
@@ -348,7 +348,7 @@
       <ol class="asks">
         <li><h3>Acesso às bases reais</h3><p>As planilhas de consolidação e as cargas do RPS Total e do RPSWEB para a validação.</p></li>
         <li><h3>Tempo da analista</h3><p>Algumas horas para validar regras e limites e para medir a linha de base.</p></li>
-        <li><h3>Decisão de tecnologia</h3><p>Onde o Radar vai rodar e guardar o histórico compartilhado.</p></li>
+        <li><h3>Aval da arquitetura</h3><p>O desenho já foi definido com a área de arquitetura da operadora e usa a infraestrutura que a empresa já tem. Falta o aval para usá-la no piloto.</p></li>
         <li><h3>Patrocínio do piloto</h3><p>Um ciclo mensal em paralelo à planilha, com metas combinadas.</p></li>
       </ol>
       <div class="cta" style="margin-top:2rem"><a class="btn btn-lime" href="dashboard/">Abrir a simulação</a></div>
@@ -483,8 +483,14 @@
           <div class="a">
             <p class="short">Na simulação, os arquivos são lidos no próprio computador e não são enviados a nenhum servidor. Os dados são de prestadores (CNPJ, CNES, nome do hospital), não de beneficiários.</p>
             <ul>
-              <li>Controle de acesso com login e perfis depende da decisão de tecnologia, que é um dos pedidos.</li>
+              <li>Na versão oficial, o acesso é pelo login corporativo da operadora, com perfis, e os dados ficam na infraestrutura interna. Os XMLs enviados e as evidências ficam guardados para responder à ANS.</li>
             </ul>
+          </div>
+        </details>
+        <details>
+          <summary>Onde o Radar vai rodar? Vai mexer no TOTVS?</summary>
+          <div class="a">
+            <p class="short">Já desenhamos com a área de arquitetura da operadora: uma aplicação interna, com o login corporativo, sobre infraestrutura que a empresa já tem. O TOTVS só entra na fase final, para conferir a rede direto no sistema, apenas em leitura.</p>
           </div>
         </details>
         <details>
@@ -593,7 +599,9 @@
             <div><dt>Ciclo mensal</dt><dd>A rotina de cada mês: carregar as bases, comparar, priorizar e fechar com as decisões registradas.</dd></div>
             <div><dt>Estabilização</dt><dd>Regra da área: um hospital novo só entra na ANS depois de aparecer três meses seguidos na rede divulgada.</dd></div>
             <div><dt>Fila de triagem</dt><dd>A lista de casos que pedem ação, organizada por prioridade, no lugar da conferência linha a linha.</dd></div>
+            <div><dt>Evidência arquivada</dt><dd>Cópia guardada de cada XML enviado e de cada rejeição da ANS, para responder a ofícios.</dd></div>
             <div><dt>Linha de base</dt><dd>A medição de como o processo está hoje, para comparar depois e provar o ganho.</dd></div>
+            <div><dt>Login único (SSO)</dt><dd>Entrar no Radar com o mesmo usuário da rede da operadora; os perfis definem o que cada pessoa vê e faz.</dd></div>
             <div><dt>Passivo de higienização</dt><dd>Hospitais ativos na ANS que não aparecem na rede divulgada há meses. Candidatos a limpeza do registro.</dd></div>
             <div><dt>Piloto</dt><dd>Uso do Radar em um ciclo real, em paralelo à planilha, para comparar os resultados.</dd></div>
             <div><dt>Regras parametrizáveis</dt><dd>Prazos, campos comparados e checklists que a área ajusta sem programação.</dd></div>
@@ -605,7 +613,7 @@
           <dl>
             <div><dt>CSV</dt><dd>Formato simples de planilha, que abre no Excel.</dd></div>
             <div><dt>ERP</dt><dd>Sistema integrado de gestão da empresa. Aqui, o TOTVS.</dd></div>
-            <div><dt>LGPD</dt><dd>Lei Geral de Proteção de Dados. A simulação lê os arquivos no próprio computador, sem enviá-los a servidores.</dd></div>
+            <div><dt>LGPD</dt><dd>Lei Geral de Proteção de Dados. A simulação lê os arquivos no próprio computador, sem enviá-los a servidores. Na versão oficial, os dados ficam na infraestrutura interna.</dd></div>
             <div><dt>MVP</dt><dd>Produto mínimo viável: a primeira versão com o essencial para provar valor.</dd></div>
             <div><dt>PROCV</dt><dd>Função do Excel usada hoje para cruzar as planilhas à mão.</dd></div>
             <div><dt>ROI</dt><dd>Retorno sobre o investimento. A estimativa anterior está em revisão e será refeita com a linha de base da fase 1.</dd></div>
