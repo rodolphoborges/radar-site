@@ -48,7 +48,7 @@
       <ol>
         <li><a href="#videos"><b>Vídeos</b><span>O problema e a solução em menos de 1 minuto</span></a></li>
         <li><a href="#problema"><b>Problema</b><span>Duas listas da mesma rede, conferidas à mão</span></a></li>
-        <li><a href="#impacto"><b>Impacto</b><span>Taxas, ofícios da ANS e exemplos</span></a></li>
+        <li><a href="#impacto"><b>Impacto</b><span>Riscos regulatórios e exemplos</span></a></li>
         <li><a href="#como"><b>Como funciona</b><span>O ciclo mensal do Radar, passo a passo</span></a></li>
         <li><a href="#prototipo"><b>Simulação</b><span>Telas do protótipo e acesso ao dashboard</span></a></li>
         <li><a href="#valor"><b>Valor</b><span>Onde está o ganho e como vamos medir</span></a></li>
@@ -119,7 +119,7 @@
           <video controls preload="metadata" playsinline poster="videos/radar-problema.jpg" aria-describedby="vd-problema">
             <source src="videos/radar-problema.mp4" type="video/mp4">
           </video>
-          <figcaption id="vd-problema"><b>1 · Como é hoje</b><span>Duas listas da mesma rede, conferidas à mão, e o custo do que escapa.</span></figcaption>
+          <figcaption id="vd-problema"><b>1 · Como é hoje</b><span>Duas listas da mesma rede, conferidas à mão, e o risco do que escapa.</span></figcaption>
         </figure>
         <figure class="card video">
           <video controls preload="metadata" playsinline poster="videos/radar-solucao.jpg" aria-describedby="vd-solucao">
@@ -167,7 +167,7 @@
   <section class="sec alt" id="impacto" aria-labelledby="h-impacto">
     <div class="wrap">
       <p class="kicker reveal">Por que importa</p>
-      <h2 class="reveal" id="h-impacto">Cada divergência vira taxa, ofício ou atendimento negado</h2>
+      <h2 class="reveal" id="h-impacto">Uma divergência pode virar ofício da ANS ou atendimento negado</h2>
       <div class="grid g2">
         <div class="card reveal">
           <h3>O volume de movimentos é real e constante</h3>
@@ -182,13 +182,13 @@
         </div>
         <div class="grid" style="margin-top:0">
           <div class="card stat reveal"><span class="v num">Ofício</span><span class="l">da ANS a cada divergência apontada</span><span class="n">a agência pede explicação formal quando a rede praticada difere da registrada</span></div>
-          <div class="card stat reveal"><span class="v num">R$ 100 mil<small>a 1 mi</small></span><span class="l">de multa potencial por hospital</span><span class="n">quando a rede praticada difere da registrada (regra da ANS)</span></div>
+          <div class="card stat reveal"><span class="v num">R$ 100 mil<small>a 1 mi</small></span><span class="l">de multa potencial por hospital</span><span class="n">prevista na regra da ANS, se a fiscalização confirmar a divergência</span></div>
           <div class="card stat reveal"><span class="v num">~R$ 1.400</span><span class="l">de taxa por produto alterado</span><span class="n">por isso incluir em produto sem vidas no SIB é desperdício</span></div>
         </div>
       </div>
       <div class="grid g2">
-        <div class="case reveal"><span class="lbl">Exemplo</span><p>Excluir um hospital que está em <b>muitos produtos</b> gera uma taxa por produto: uma única exclusão pode custar <b>dezenas de milhares de reais</b>.</p></div>
-        <div class="case reveal"><span class="lbl">Exemplo</span><p>Quando o cadastro de um hospital fica diferente nas duas bases, o beneficiário pode ter o <b>atendimento negado</b>. O Radar existe para que isso seja visto antes.</p></div>
+        <div class="case reveal"><span class="lbl">Exemplo</span><p>Toda mudança na rede gera uma taxa da ANS por produto afetado. O Radar mostra <b>quantos produtos</b> uma mudança atinge <b>antes da decisão</b>.</p></div>
+        <div class="case reveal"><span class="lbl">Exemplo</span><p>Quando os dados de um hospital ficam diferentes nas duas bases, o beneficiário pode ter o <b>atendimento negado</b>. O Radar existe para que isso seja visto antes.</p></div>
       </div>
     </div>
   </section>
@@ -356,10 +356,10 @@
         <details>
           <summary>A multa de R$ 100 mil a R$ 1 milhão é um risco real?</summary>
           <div class="a">
-            <p class="short">Sim. Ela está prevista na regra da ANS para quando a rede praticada difere da registrada, e quem responde é a operadora que contrata o hospital.</p>
+            <p class="short">É um risco, não uma cobrança automática. A multa está prevista na regra da ANS e só é aplicada se a fiscalização confirmar que a rede praticada difere da registrada. Quem responde é a operadora que contrata o hospital.</p>
             <ul>
               <li>Mesmo sem a multa direta, a divergência já custa: ofícios da ANS para responder, taxas por produto alterado (cerca de R$ 1.400 cada) e retrabalho.</li>
-              <li>Uma exclusão que atinge muitos produtos gera uma taxa por produto, e o valor cresce rápido.</li>
+              <li>Toda mudança na rede gera taxa por produto afetado. O Radar mostra esse custo antes da decisão.</li>
             </ul>
           </div>
         </details>
@@ -508,8 +508,8 @@
           <dl>
             <div><dt>Divergência</dt><dd>Diferença entre a rede registrada na ANS e a rede divulgada, como um CNES diferente ou um hospital que está numa lista e não na outra.</dd></div>
             <div><dt>Glosa</dt><dd>Recusa de pagamento de uma conta de atendimento por inconsistência de cadastro ou de regra.</dd></div>
-            <div><dt>Multa potencial</dt><dd>De R$ 100 mil a R$ 1 milhão por hospital quando a rede praticada difere da registrada. Recai sobre a operadora que contrata o hospital.</dd></div>
-            <div><dt>Negativa de atendimento</dt><dd>Quando o beneficiário procura um hospital da rede e não é atendido, por exemplo por cadastro bloqueado ou desatualizado.</dd></div>
+            <div><dt>Multa potencial</dt><dd>De R$ 100 mil a R$ 1 milhão por hospital, se a fiscalização confirmar que a rede praticada difere da registrada. Recai sobre a operadora que contrata o hospital.</dd></div>
+            <div><dt>Negativa de atendimento</dt><dd>Quando o beneficiário procura um hospital da rede e não é atendido, por exemplo quando o hospital aparece indisponível ou desatualizado no sistema.</dd></div>
           </dl>
         </div>
         <div class="card glos-group reveal">
