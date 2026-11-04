@@ -301,6 +301,14 @@
           <p>O cruzamento manual dá lugar a uma fila pronta. A medição de horas com a área ainda está pendente.</p>
         </div>
       </div>
+      <h3 class="reveal" style="margin-top:2rem">Metas do piloto</h3>
+      <div class="grid g3">
+        <div class="card stat reveal"><span class="v">+50%</span><span class="l">produtividade da analista</span><span class="n">fila pronta no lugar do cruzamento manual</span></div>
+        <div class="card stat reveal"><span class="v">95%</span><span class="l">de acurácia na triagem</span><span class="n">hoje estimada em ~70% no processo manual</span></div>
+        <div class="card stat reveal"><span class="v">100%</span><span class="l">das decisões registradas</span><span class="n">hoje a decisão de cada caso fica numa cor da planilha</span></div>
+      </div>
+      <p class="note reveal">Estimativa da equipe com dados fictícios. As metas são confirmadas na fase 1, com a linha de base medida nas bases reais.</p>
+
       <div class="grid g4">
         <div class="card stat reveal"><span class="l">Aderência ANS × RNP</span><span class="n">conformes ÷ hospitais ativos na ANS, por ciclo</span></div>
         <div class="card stat reveal"><span class="l">Pendências por tipo</span><span class="n">CNES, intermediária, CNPJ, entradas e saídas</span></div>
@@ -320,7 +328,7 @@
         <li class="done reveal"><span class="ph">Fase 0</span><span class="tag t-ok">Concluída</span><h3>Descoberta e simulação</h3><ul><li>Entrevistas e quantificação da dor</li><li>Regras de negócio documentadas</li><li>Ciclo mensal simulado, com dados fictícios</li></ul></li>
         <li class="reveal"><span class="ph">Fase 1</span><span class="tag t-warn">Próxima</span><h3>Validar com dados reais</h3><ul><li>Rodar sobre as planilhas reais de consolidação</li><li>Medir a linha de base por tipo de divergência</li><li>Validar limites e regras com a analista</li></ul></li>
         <li class="reveal"><span class="ph">Fase 2</span><span class="tag t-neutral">Planejada</span><h3>Piloto em ciclo real</h3><ul><li>Um ou mais meses de operação em paralelo à planilha</li><li>Na infraestrutura da operadora: login corporativo, histórico e evidências guardados</li><li>Metas numéricas de sucesso do MVP</li></ul></li>
-        <li class="reveal"><span class="ph">Fase 3</span><span class="tag t-neutral">Planejada</span><h3>Escalar e integrar</h3><ul><li>Gate SIB automático com a base de vidas</li><li>Geração dos XMLs RPI e RPA</li><li>Verificação direto no TOTVS, só em leitura</li></ul></li>
+        <li class="reveal"><span class="ph">Fase 3</span><span class="tag t-neutral">Planejada</span><h3>Escalar e replicar</h3><ul><li>Cargas automáticas da ANS e da Unimed do Brasil</li><li>Gate SIB automático e geração dos XMLs RPI e RPA</li><li>Verificação direto no TOTVS, só em leitura</li><li>Replicar para outras áreas e outras Unimeds</li></ul></li>
       </ol>
     </div>
   </section>
@@ -347,10 +355,11 @@
       <p class="lead">Menos planilha, mais segurança: a rede que vendemos é a rede que funciona.</p>
       <ol class="asks">
         <li><h3>Acesso às bases reais</h3><p>As planilhas de consolidação e as cargas do RPS Total e do RPSWEB para a validação.</p></li>
-        <li><h3>Tempo da analista</h3><p>Algumas horas para validar regras e limites e para medir a linha de base.</p></li>
+        <li><h3>Tempo da área</h3><p>Cerca de 24 horas para validar regras e limites e para medir a linha de base.</p></li>
         <li><h3>Aval da arquitetura</h3><p>O desenho já foi definido com a área de arquitetura da operadora e usa a infraestrutura que a empresa já tem. Falta o aval para usá-la no piloto.</p></li>
         <li><h3>Patrocínio do piloto</h3><p>Um ciclo mensal em paralelo à planilha, com metas combinadas.</p></li>
       </ol>
+      <p class="lead" style="margin-top:1.5rem"><b>Investimento da 1ª fase:</b> cerca de 100 horas de desenvolvimento e 24 horas de apoio da área, sem custo de infraestrutura, porque roda no ambiente que a operadora já tem. <b>Retorno esperado:</b> +50% de produtividade da analista, taxas evitadas e menor exposição a multa. E o mesmo motor pode ser replicado em outras áreas e outras Unimeds.</p>
       <div class="cta" style="margin-top:2rem"><a class="btn btn-lime" href="dashboard/">Abrir a simulação</a></div>
     </div>
   </section>
@@ -393,6 +402,8 @@
           <p>Integrante do grupo do Radar de Integridade Assistencial.</p> <!-- trocar pela frase escrita pelo integrante -->
         </article>
       </div>
+      <p class="lead reveal" style="margin-top:1.6rem"><b>Por que esta equipe:</b> quem sente o efeito de uma rede desatualizada, na auditoria de contas e no intercâmbio, trabalhando junto com quem constrói a solução, na TI. Já entregamos o processo mapeado, as regras documentadas, a arquitetura desenhada e a simulação funcionando.</p>
+      <p class="reveal"><b>Com a participação de:</b> Cadastro, Contas Médicas, Tecnologia e Arquitetura, Escritório de Processos, Gerência de Inteligência Artificial, ITA e Supera Parque.</p>
     </div>
   </section>
 
@@ -416,11 +427,11 @@
         <details>
           <summary>Quanto custa e qual é o retorno?</summary>
           <div class="a">
-            <p class="short">A primeira fase custa algumas dezenas de horas de trabalho interno, sem licença nem servidor. O retorno será medido com dados reais, em vez de prometido.</p>
+            <p class="short">A primeira fase custa cerca de 100 horas de desenvolvimento e 24 horas de apoio da área, sem licença e sem custo de infraestrutura, porque roda no ambiente que a operadora já tem. O retorno esperado é 50% a mais de produtividade da analista, taxas evitadas e menor exposição a multa, a confirmar no piloto.</p>
             <ul>
               <li>Até aqui, o desembolso foi praticamente zero: só o tempo da equipe.</li>
               <li>A estimativa anterior de ROI está em revisão, porque contava economias que a equipe já obtém e premissas sem fonte.</li>
-              <li>O valor tem três frentes: exposição regulatória (comprovada), taxas evitadas (em validação) e tempo da analista (a medir).</li>
+              <li>O valor tem três frentes: exposição regulatória (comprovada), taxas evitadas (~R$ 1.400 por produto alterado) e tempo da analista (meta de +50% de produtividade).</li>
             </ul>
           </div>
         </details>
@@ -459,7 +470,7 @@
         <details>
           <summary>Quanto tempo a analista vai economizar?</summary>
           <div class="a">
-            <p class="short">O número exato ainda será medido. Hoje a conferência é 100% manual, linha a linha; com o Radar, a analista passa a trabalhar só a fila de casos que pedem ação.</p>
+            <p class="short">Nos testes com dados fictícios, estimamos 50% a mais de produtividade e acurácia de 95% na triagem, contra cerca de 70% no processo manual. São metas: o número real sai da linha de base da fase 1. Com o Radar, a analista trabalha só a fila de casos que pedem ação.</p>
             <ul>
               <li>A medição das horas atuais faz parte da fase 1 (linha de base).</li>
               <li>O ganho também está em não deixar passar casos: hoje, entre uma mudança na rede e o ajuste na ANS, passam de 2 a 3 meses.</li>
@@ -506,6 +517,16 @@
             <p class="short">Com o acesso às bases e algumas horas da analista, a fase 1 roda um mês real e compara com a conferência manual. É a primeira prova com dados reais, pequena e reversível.</p>
             <ul>
               <li>As datas das fases 2 e 3 dependem das quatro decisões e do resultado da fase 1.</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>Isso serve para outras áreas ou outras Unimeds?</summary>
+          <div class="a">
+            <p class="short">Sim. O Radar compara duas bases, prioriza as diferenças e registra a decisão. Esse motor serve a outras redes, a outras conferências regulatórias e a outras Unimeds que têm o mesmo desafio com a ANS.</p>
+            <ul>
+              <li>Começamos pela rede hospitalar porque é onde está o maior risco. Replicar é a fase 3 do roadmap.</li>
+              <li>As regras e os checklists são parametrizáveis: uma nova área configura os seus, sem programar.</li>
             </ul>
           </div>
         </details>
