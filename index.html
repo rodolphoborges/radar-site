@@ -63,6 +63,29 @@
 
 <main id="inicio">
 
+  <!-- Flyer: tela inicial no celular (site.js liga o modo flyer em telas estreitas) -->
+  <section class="flyer" id="flyer" aria-labelledby="h-flyer" hidden>
+    <div class="wrap">
+      <div class="fly-head">
+        <span class="fly-logo"><svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="32" cy="32" r="15.5" fill="none" stroke="currentColor" stroke-width="2.5" opacity=".45"/><path d="M32 32 L32 5 A27 27 0 0 1 55.4 18.5 Z" fill="#b1d34b" opacity=".3"/><path d="M32 32 L55.4 18.5" stroke="#b1d34b" stroke-width="4" stroke-linecap="round"/><circle cx="32" cy="32" r="4" fill="currentColor"/><path d="M36.5 44.5 l4.6 4.6 l9.4 -10" fill="none" stroke="#b1d34b" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h1 id="h-flyer">Radar de Integridade Assistencial</h1>
+        <p class="fly-sub">Complemento da apresentação à banca</p>
+      </div>
+      <ol class="fly-list">
+        <li><a href="#videos"><b>Vídeos</b><span>O problema e a solução em menos de 1 minuto</span><svg class="fly-go" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+        <li><a href="#prototipo"><b>Simulação</b><span>Telas do protótipo e acesso ao dashboard</span><svg class="fly-go" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+        <li><a href="#problema"><b>O problema</b><span>Duas listas da mesma rede e o risco do que escapa</span><svg class="fly-go" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+        <li><a href="#como"><b>Como funciona</b><span>O ciclo mensal do Radar, passo a passo</span><svg class="fly-go" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+        <li><a href="#perguntas"><b>Perguntas</b><span>Respostas rápidas, valor, roadmap e o pedido</span><svg class="fly-go" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+        <li><a href="#glossario"><b>Glossário</b><span>O significado de cada sigla</span><svg class="fly-go" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+      </ol>
+      <p class="fly-foot">Projeto Transforma · Telas com dados fictícios</p>
+    </div>
+  </section>
+  <div class="fly-back" id="fly-back" hidden>
+    <div class="wrap"><a href="#inicio"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>Menu</a><span id="fly-title"></span></div>
+  </div>
+
   <!-- Hero -->
   <section class="hero" aria-labelledby="h-hero">
     <div class="wrap">
@@ -330,7 +353,7 @@
     <div class="wrap">
       <p class="kicker reveal">Perguntas frequentes</p>
       <h2 class="reveal" id="h-faq">O que costumam perguntar sobre o Radar</h2>
-      <p class="lead reveal">Respostas curtas, com os detalhes a um clique. Os números citados estão nas seções acima, com a fonte de cada um.</p>
+      <p class="lead reveal">Respostas curtas, com os detalhes a um clique. Os números citados estão nas outras seções do site, com a fonte de cada um.</p>
       <div class="faq reveal">
         <details>
           <summary>Por que não comprar uma solução pronta do mercado?</summary>

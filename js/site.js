@@ -21,6 +21,48 @@
     document.addEventListener('click', function (e) { if (!mm.hidden && !e.target.closest('.top')) setMenu(false); });
   }
 
+  /* Flyer no celular: até 760 px, a tela inicial é o menu e cada item abre uma página curta.
+     As páginas agrupam seções existentes; links internos (#secao) abrem a página que a contém. */
+  var PAGES = {
+    videos: { t: 'Vídeos', s: ['videos'] },
+    prototipo: { t: 'Simulação', s: ['prototipo'] },
+    problema: { t: 'O problema', s: ['problema', 'impacto', 'evidencias'] },
+    como: { t: 'Como funciona', s: ['como'] },
+    perguntas: { t: 'Perguntas', s: ['perguntas', 'valor', 'roadmap', 'pedido'] },
+    glossario: { t: 'Glossário', s: ['glossario'] }
+  };
+  var DONO = {};
+  Object.keys(PAGES).forEach(function (p) { PAGES[p].s.forEach(function (id) { DONO[id] = p; }); });
+  var fly = document.getElementById('flyer'), back = document.getElementById('fly-back'), ftitle = document.getElementById('fly-title');
+  var estreito = window.matchMedia ? matchMedia('(max-width: 760px)') : null;
+  var secoes = document.querySelectorAll('main > section');
+  var mostrar = function () {
+    if (!fly) return;
+    var on = estreito && estreito.matches;
+    root.classList.toggle('fly', !!on);
+    fly.hidden = !on; back.hidden = !on;
+    secoes.forEach(function (sec) { sec.classList.remove('fly-on'); });
+    back.classList.remove('fly-on');
+    if (!on) return;
+    var id = (location.hash || '').slice(1), pg = DONO[id];
+    if (!pg) {
+      root.classList.add('fly-home'); fly.classList.add('fly-on');
+      window.scrollTo(0, 0); return;
+    }
+    root.classList.remove('fly-home');
+    back.classList.add('fly-on'); ftitle.textContent = PAGES[pg].t;
+    PAGES[pg].s.forEach(function (sid) { var el = document.getElementById(sid); if (el) { el.classList.add('fly-on'); el.querySelectorAll('.reveal').forEach(function (r) { r.classList.add('in'); }); } });
+    var alvo = document.getElementById(id);
+    var primeiro = id === pg;
+    if (primeiro) window.scrollTo(0, 0);
+    else if (alvo) setTimeout(function () { var y = alvo.getBoundingClientRect().top + window.scrollY - 120; window.scrollTo(0, y); }, 0);
+  };
+  window.addEventListener('hashchange', mostrar);
+  if (estreito) { if (estreito.addEventListener) estreito.addEventListener('change', mostrar); else if (estreito.addListener) estreito.addListener(mostrar); }
+  var brand = document.querySelector('.brand');
+  if (brand) brand.addEventListener('click', function (e) { if (root.classList.contains('fly')) { e.preventDefault(); if (location.hash && location.hash !== '#inicio') location.hash = '#inicio'; else mostrar(); } });
+  mostrar();
+
   var items = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (es) {
