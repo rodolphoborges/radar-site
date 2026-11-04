@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Radar de Integridade Assistencial · Projeto Transforma</title>
+<meta name="description" content="Projeto Transforma: o Radar de Integridade Assistencial cruza todo mês a rede hospitalar registrada na ANS com a rede divulgada no RNP, aponta cada divergência e guia a correção.">
+<link rel="icon" type="image/svg+xml" href="img/radar-icone-app.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="img/radar-icone-32.png">
+<link rel="apple-touch-icon" href="img/radar-icone-180.png">
+<script>
+  (function () {
+    var d = document.documentElement; d.className = 'js';
+    try { var t = localStorage.getItem('radar-site-tema'); if (t === 'dark' || t === 'light') d.setAttribute('data-theme', t); } catch (e) {}
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#problema">Pular para o conteúdo</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Radar de Integridade Assistencial, início">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 64 64" width="24" height="24"><circle cx="32" cy="32" r="27" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="32" cy="32" r="15.5" fill="none" stroke="currentColor" stroke-width="2.5" opacity=".45"/><path d="M32 32 L32 5 A27 27 0 0 1 55.4 18.5 Z" fill="#b1d34b" opacity=".3"/><path d="M32 32 L55.4 18.5" stroke="#b1d34b" stroke-width="4" stroke-linecap="round"/><circle cx="32" cy="32" r="4" fill="currentColor"/><path d="M36.5 44.5 l4.6 4.6 l9.4 -10" fill="none" stroke="#b1d34b" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span><b>Radar de Integridade Assistencial</b><small>Projeto Transforma</small></span>
+    </a>
+    <nav class="nav" aria-label="Seções">
+      <a href="#problema">Problema</a>
+      <a href="#impacto">Impacto</a>
+      <a href="#como">Como funciona</a>
+      <a href="#prototipo">Simulação</a>
+      <a href="#valor">Valor</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#perguntas">Perguntas</a>
+      <a href="#glossario">Glossário</a>
+    </nav>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu-m"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path class="i-open" d="M4 7h16M4 12h16M4 17h16"/><path class="i-close" d="M6 6l12 12M18 6L6 18"/></svg><span>Menu</span></button>
+    <button class="theme" id="theme" type="button" aria-label="Alternar tema claro ou escuro" title="Alternar tema"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+  </div>
+  <nav class="menu-m" id="menu-m" aria-label="Seções" hidden>
+    <div class="wrap">
+      <p class="menu-m-intro">O Radar cruza todo mês a rede de hospitais registrada na ANS com a rede que o cliente encontra, e aponta cada diferença. Escolha por onde começar:</p>
+      <ol>
+        <li><a href="#videos"><b>Vídeos</b><span>O problema e a solução em menos de 1 minuto</span></a></li>
+        <li><a href="#problema"><b>Problema</b><span>Duas listas da mesma rede, conferidas à mão</span></a></li>
+        <li><a href="#impacto"><b>Impacto</b><span>Taxas, ofícios da ANS e exemplos</span></a></li>
+        <li><a href="#como"><b>Como funciona</b><span>O ciclo mensal do Radar, passo a passo</span></a></li>
+        <li><a href="#prototipo"><b>Simulação</b><span>Telas do protótipo e acesso ao dashboard</span></a></li>
+        <li><a href="#valor"><b>Valor</b><span>Onde está o ganho e como vamos medir</span></a></li>
+        <li><a href="#roadmap"><b>Roadmap</b><span>Fases e próximos passos</span></a></li>
+        <li><a href="#perguntas"><b>Perguntas</b><span>Respostas rápidas para a banca</span></a></li>
+        <li><a href="#glossario"><b>Glossário</b><span>O significado de cada sigla</span></a></li>
+      </ol>
+      <a class="btn menu-m-cta" href="dashboard/">Abrir a simulação do dashboard</a>
+    </div>
+  </nav>
+</header>
+
+<main id="inicio">
+
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="h-hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Projeto Transforma · Six Lean Sigma · Inovação</p>
+        <h1 id="h-hero">A rede que a ANS enxerga precisa ser <em>a rede que o beneficiário encontra</em>.</h1>
+        <p class="sub">O Radar de Integridade Assistencial cruza todo mês a rede hospitalar registrada na ANS com a rede divulgada no RNP, aponta cada divergência pela chave composta e guia a analista do caso até a correção, com o registro do que foi feito.</p>
+        <div class="cta">
+          <a class="btn btn-lime" href="dashboard/">Abrir a simulação</a>
+          <a class="btn btn-line" href="#videos">Entender o problema</a>
+        </div>
+        <div class="scope">
+          <span><b>2.502</b>hospitais ativos na ANS</span>
+          <span><b>851</b>movimentos em 20 meses</span>
+          <span><b>1</b>ciclo por mês, com começo e fim</span>
+        </div>
+      </div>
+      <div class="radar" aria-hidden="true">
+        <svg viewBox="0 0 400 400">
+          <defs>
+            <radialGradient id="rg" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#b1d34b" stop-opacity=".10"/><stop offset="1" stop-color="#b1d34b" stop-opacity="0"/></radialGradient>
+            <linearGradient id="sw" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#b1d34b" stop-opacity="0"/><stop offset="1" stop-color="#b1d34b" stop-opacity=".45"/></linearGradient>
+          </defs>
+          <circle cx="200" cy="200" r="190" fill="url(#rg)"/>
+          <g fill="none" stroke="#e9f3ee" stroke-opacity=".22">
+            <circle cx="200" cy="200" r="185" stroke-width="2"/>
+            <circle cx="200" cy="200" r="130"/>
+            <circle cx="200" cy="200" r="75"/>
+            <path d="M200 15v370M15 200h370"/>
+          </g>
+          <g class="sweep">
+            <path d="M200 200 L200 15 A185 185 0 0 1 360.2 107.5 Z" fill="url(#sw)"/>
+            <path d="M200 200 L360.2 107.5" stroke="#b1d34b" stroke-width="3" stroke-linecap="round"/>
+          </g>
+          <circle cx="200" cy="200" r="7" fill="#e9f3ee"/>
+          <g class="blip"><circle cx="292" cy="118" r="7" fill="#f08a8f"/><text x="280" y="104" text-anchor="end">CNES divergente</text></g>
+          <g class="blip"><circle cx="110" cy="132" r="7" fill="#f1c46b"/><text x="22" y="114">Ausente na ANS</text></g>
+          <g class="blip"><circle cx="300" cy="270" r="7" fill="#f1c46b"/><text x="248" y="300">Saiu do RNP</text></g>
+          <g class="blip"><circle cx="136" cy="296" r="7" fill="#7fd0da"/><text x="70" y="326">Em estabilização</text></g>
+          <path d="M226 252 l12 12 l24 -26" fill="none" stroke="#b1d34b" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problema -->
+  <section class="sec alt" id="videos" aria-labelledby="h-videos">
+    <div class="wrap">
+      <p class="kicker reveal">Em um minuto</p>
+      <h2 class="reveal" id="h-videos">O problema e a solução, em dois vídeos curtos</h2>
+      <p class="lead reveal">Menos de 30 segundos cada. A narração é provisória, feita com voz sintética; a versão final terá a voz da equipe.</p>
+      <div class="grid g2 videos reveal">
+        <figure class="card video">
+          <video controls preload="metadata" playsinline poster="videos/radar-problema.jpg" aria-describedby="vd-problema">
+            <source src="videos/radar-problema.mp4" type="video/mp4">
+          </video>
+          <figcaption id="vd-problema"><b>1 · Como é hoje</b><span>Duas listas da mesma rede, conferidas à mão, e o custo do que escapa.</span></figcaption>
+        </figure>
+        <figure class="card video">
+          <video controls preload="metadata" playsinline poster="videos/radar-solucao.jpg" aria-describedby="vd-solucao">
+            <source src="videos/radar-solucao.mp4" type="video/mp4">
+          </video>
+          <figcaption id="vd-solucao"><b>2 · Com o Radar</b><span>O ciclo mensal no protótipo: carregar, cruzar, decidir e acompanhar.</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="problema" aria-labelledby="h-problema">
+    <div class="wrap">
+      <p class="kicker reveal">O problema</p>
+      <h2 class="reveal" id="h-problema">Dois cadastros da mesma rede, conferidos à mão</h2>
+      <p class="lead reveal">A regra é simples: o hospital que a operadora oferece precisa estar registrado na ANS exatamente como é divulgado na rede nacional. Na prática, as duas bases mudam todo mês, em ritmos diferentes, e quem garante que batem é uma planilha.</p>
+
+      <div class="worlds reveal">
+        <div class="world">
+          <span class="lbl">Rede registrada</span>
+          <h3>ANS · RPS / RPSWEB</h3>
+          <p>O que a operadora declarou à agência: cada hospital da rede de cada produto, com CNPJ, CNES e operadora intermediária. Muda por XML (RPI, RPA) ou pela plataforma da ANS.</p>
+        </div>
+        <div class="key">
+          <div class="key-chips"><span>Cód. Unimed</span><span>CNPJ</span><span>CNES</span><span>Intermediária</span></div>
+          <small>A chave composta. Se qualquer parte muda, o registro precisa mudar.</small>
+        </div>
+        <div class="world">
+          <span class="lbl">Rede divulgada</span>
+          <h3>RNP · RPS Total (PTU A400)</h3>
+          <p>O que as Unimeds publicam na Rede Nacional de Prestadores, carga a carga. É a rede que o beneficiário encontra e a fonte de verdade para o que deve estar na ANS.</p>
+        </div>
+      </div>
+
+      <div class="grid g4">
+        <div class="card stat reveal"><span class="v num">2.502</span><span class="l">hospitais ativos na ANS</span><span class="n">97,42% da rede básica</span></div>
+        <div class="card stat reveal"><span class="v num">~487<small>mil</small></span><span class="l">linhas em 3 planilhas</span><span class="n">de controle, conferidas à mão</span></div>
+        <div class="card stat reveal"><span class="v num">100%</span><span class="l">manual em Excel</span><span class="n">empilhar, cruzar e pintar por cor</span></div>
+        <div class="card stat reveal"><span class="v num">2–3<small>meses</small></span><span class="l">para regularizar</span><span class="n">da mudança no RNP ao ajuste na ANS</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impacto -->
+  <section class="sec alt" id="impacto" aria-labelledby="h-impacto">
+    <div class="wrap">
+      <p class="kicker reveal">Por que importa</p>
+      <h2 class="reveal" id="h-impacto">Cada divergência vira taxa, ofício ou atendimento negado</h2>
+      <div class="grid g2">
+        <div class="card reveal">
+          <h3>O volume de movimentos é real e constante</h3>
+          <p>Movimentos na rede hospitalar registrada na ANS em 20 meses.</p>
+          <div class="moves" role="list">
+            <div class="move" role="listitem"><span>Vinculações</span><span class="bar"><i style="width:100%"></i></span><b>344</b></div>
+            <div class="move" role="listitem"><span>Alterações</span><span class="bar"><i style="width:69.2%"></i></span><b>238</b></div>
+            <div class="move" role="listitem"><span>Exclusões</span><span class="bar"><i style="width:47.1%"></i></span><b>162</b></div>
+            <div class="move" role="listitem"><span>Inclusões</span><span class="bar"><i style="width:31.1%"></i></span><b>107</b></div>
+          </div>
+          <span class="src">Fonte: levantamento de 27/08 com a área de cadastro.</span>
+        </div>
+        <div class="grid" style="margin-top:0">
+          <div class="card stat reveal"><span class="v num">Ofício</span><span class="l">da ANS a cada divergência apontada</span><span class="n">a agência pede explicação formal quando a rede praticada difere da registrada</span></div>
+          <div class="card stat reveal"><span class="v num">R$ 100 mil<small>a 1 mi</small></span><span class="l">de multa potencial por hospital</span><span class="n">quando a rede praticada difere da registrada (regra da ANS)</span></div>
+          <div class="card stat reveal"><span class="v num">~R$ 1.400</span><span class="l">de taxa por produto alterado</span><span class="n">por isso incluir em produto sem vidas no SIB é desperdício</span></div>
+        </div>
+      </div>
+      <div class="grid g2">
+        <div class="case reveal"><span class="lbl">Exemplo</span><p>Excluir um hospital que está em <b>muitos produtos</b> gera uma taxa por produto: uma única exclusão pode custar <b>dezenas de milhares de reais</b>.</p></div>
+        <div class="case reveal"><span class="lbl">Exemplo</span><p>Quando o cadastro de um hospital fica diferente nas duas bases, o beneficiário pode ter o <b>atendimento negado</b>. O Radar existe para que isso seja visto antes.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Como funciona -->
+  <section class="sec" id="como" aria-labelledby="h-como">
+    <div class="wrap">
+      <p class="kicker reveal">Como funciona</p>
+      <h2 class="reveal" id="h-como">Um ciclo mensal, do arquivo à decisão registrada</h2>
+      <p class="lead reveal">O Radar segue o trabalho que a analista já faz, sem a planilha no meio. Cada etapa substitui um passo manual.</p>
+      <ol class="cycle">
+        <li class="reveal"><h3>Carregar as bases</h3><p>Solta o RPS Total de cada mês e o CSV do RPSWEB. As colunas e a competência são reconhecidas sozinhas.</p><p class="rep">Substitui: empilhar o RPS Total e montar a tabela dinâmica.</p></li>
+        <li class="reveal"><h3>Cruzar pela chave</h3><p>Conta a presença de cada hospital mês a mês e compara o mês mais recente com a ANS ativa, campo a campo.</p><p class="rep">Substitui: PROCV e conferência visual.</p></li>
+        <li class="reveal"><h3>Triar com checklist</h3><p>Cada caso mostra RNP × ANS, a linha do tempo, o que conferir e os dados prontos para a correção, com consulta ao CNES.</p><p class="rep">Substitui: a aba “Análise do mês” pintada por cores.</p></li>
+        <li class="reveal"><h3>Fechar e medir</h3><p>Decisão, protocolo e observação viram dado. O ciclo fecha com exportação e alimenta os indicadores da coordenação.</p><p class="rep">Substitui: copiar a aba para guardar o mês.</p></li>
+      </ol>
+
+      <div class="sits reveal" role="table" aria-label="Situações que o Radar identifica">
+        <div class="sit head" role="row"><span role="columnheader">Situação</span><span role="columnheader">Quando</span><span role="columnheader">Ação sugerida</span></div>
+        <div class="sit" role="row"><span role="cell"><span class="tag t-danger">Alterar cadastro</span></span><p role="cell">Está nas duas bases, mas CNES, intermediária, urgência ou UF diferem, ou o mesmo CNES aparece com outro CNPJ.</p><p class="act" role="cell">RPA via PTA ou ofício</p></div>
+        <div class="sit" role="row"><span role="cell"><span class="tag t-danger">Investigar</span></span><p role="cell">Mesmo CNPJ divulgado no mês com CNES ou intermediária diferentes.</p><p class="act" role="cell">Conferir no RNP e no CNES</p></div>
+        <div class="sit" role="row"><span role="cell"><span class="tag t-warn">Candidato a exclusão</span></span><p role="cell">Ativo na ANS e ausente do RNP há cargas seguidas.</p><p class="act" role="cell">Plataforma ANS (RN 585)</p></div>
+        <div class="sit" role="row"><span role="cell"><span class="tag t-warn">Candidato a inclusão</span></span><p role="cell">Divulgado há 3 meses seguidos e ausente na ANS.</p><p class="act" role="cell">RPI, se o produto tiver vidas no SIB</p></div>
+        <div class="sit" role="row"><span role="cell"><span class="tag t-info">Observar · Estabilização</span></span><p role="cell">Saiu só na última carga, ou ainda não completou 3 divulgações.</p><p class="act" role="cell">Aguardar a próxima carga</p></div>
+        <div class="sit" role="row"><span role="cell"><span class="tag t-neutral">Sem divulgação</span></span><p role="cell">Ativo na ANS e nunca divulgado na janela carregada.</p><p class="act" role="cell">Passivo de higienização</p></div>
+        <div class="sit" role="row"><span role="cell"><span class="tag t-ok">Conforme</span></span><p role="cell">Chave composta igual nas duas bases.</p><p class="act" role="cell">Nada a fazer</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Simulação do processo -->
+  <section class="sec alt" id="prototipo" aria-labelledby="h-proto">
+    <div class="wrap">
+      <p class="kicker reveal">Simulação do processo</p>
+      <h2 class="reveal" id="h-proto">Uma simulação já mostra o ciclo completo</h2>
+      <p class="lead reveal">Para tornar a proposta concreta, simulamos o processo no navegador, com uma base fictícia de 2.502 hospitais e 9 competências no mesmo formato dos arquivos da área. A simulação ainda não rodou com dados reais e as regras não foram validadas: essa é a próxima fase.</p>
+      <div class="tabs-shot reveal" role="group" aria-label="Tela da simulação">
+        <button type="button" data-shot="triagem" aria-pressed="true">Triagem de um caso</button>
+        <button type="button" data-shot="indicadores" aria-pressed="false">Indicadores</button>
+      </div>
+      <figure class="shot reveal" style="margin-top:.9rem">
+        <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i><span>Radar de Integridade Assistencial</span></div>
+        <img id="shot-img" src="img/radar-triagem.png" width="1920" height="1140" alt="Tela de triagem do Radar: fila de pendências à esquerda e, à direita, o caso aberto com a comparação RNP × ANS, o campo divergente em destaque e os dados para a correção.">
+        <figcaption>Base de demonstração com nomes, CNPJs e CNES fictícios.</figcaption>
+      </figure>
+      <ul class="feat">
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span><b>LGPD por desenho.</b> Os arquivos são lidos no próprio computador. Nada é enviado a servidor.</span></li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span><b>Regras parametrizáveis.</b> Limites, campos comparados e checklists ficam num arquivo único, com fonte e histórico.</span></li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span><b>Perfis de uso.</b> Analista, gestor de regras e visualização para a coordenação.</span></li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span><b>Pronto para corrigir.</b> Valores a levar para a ANS com botão de copiar e consulta ao CNES no DATASUS.</span></li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span><b>Decisão vira dado.</b> Situação, decisão, protocolo e observação exportáveis em CSV.</span></li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span><b>Sem instalação.</b> HTML, CSS e JavaScript puros. Abre com dois cliques.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Valor -->
+  <section class="sec" id="valor" aria-labelledby="h-valor">
+    <div class="wrap">
+      <p class="kicker reveal">Valor</p>
+      <h2 class="reveal" id="h-valor">Onde está o ganho e como vamos provar</h2>
+      <p class="lead reveal">Preferimos mostrar de onde vem cada número e o quanto ele já está comprovado. O valor final sai da linha de base medida com o próprio Radar.</p>
+      <div class="grid g3">
+        <div class="card lever reveal">
+          <span class="tag t-ok">Comprovado</span>
+          <h3>Exposição regulatória</h3>
+          <p class="v num">R$ 100 mil a 1 mi</p>
+          <p>Multa potencial por hospital quando a rede praticada difere da registrada, além dos ofícios da ANS para responder. Detectar antes reduz a exposição.</p>
+        </div>
+        <div class="card lever reveal">
+          <span class="tag t-warn">Em validação</span>
+          <h3>Taxas evitadas</h3>
+          <p class="v num">~R$ 1.400 / produto</p>
+          <p>O gate “vida no SIB” evita incluir em produto sem beneficiário. Falta medir quantas taxas o processo atual já evita, para contar só o ganho novo.</p>
+        </div>
+        <div class="card lever reveal">
+          <span class="tag t-warn">Em validação</span>
+          <h3>Tempo da analista</h3>
+          <p class="v num">2 semanas → 1 dia</p>
+          <p>O cruzamento manual dá lugar a uma fila pronta. A medição de horas com a área ainda está pendente.</p>
+        </div>
+      </div>
+      <div class="grid g4">
+        <div class="card stat reveal"><span class="l">Aderência ANS × RNP</span><span class="n">conformes ÷ hospitais ativos na ANS, por ciclo</span></div>
+        <div class="card stat reveal"><span class="l">Pendências por tipo</span><span class="n">CNES, intermediária, CNPJ, entradas e saídas</span></div>
+        <div class="card stat reveal"><span class="l">Tempo até corrigir</span><span class="n">da detecção ao protocolo na ANS</span></div>
+        <div class="card stat reveal"><span class="l">Passivo de higienização</span><span class="n">~95 hospitais sem divulgação a tratar</span></div>
+      </div>
+      <p class="note reveal"><b>Transparência:</b> a estimativa anterior de ROI de 114% e payback de 6 meses está em revisão, porque contava economia que a equipe já obtém manualmente e premissas sem fonte. A revisão está registrada nas issues #1 a #5 do projeto.</p>
+    </div>
+  </section>
+
+  <!-- Roadmap -->
+  <section class="sec alt" id="roadmap" aria-labelledby="h-road">
+    <div class="wrap">
+      <p class="kicker reveal">Roadmap</p>
+      <h2 class="reveal" id="h-road">Da simulação ao processo oficial</h2>
+      <ol class="road">
+        <li class="done reveal"><span class="ph">Fase 0</span><span class="tag t-ok">Concluída</span><h3>Descoberta e simulação</h3><ul><li>Entrevistas e quantificação da dor</li><li>Regras de negócio documentadas</li><li>Ciclo mensal simulado, com dados fictícios</li></ul></li>
+        <li class="reveal"><span class="ph">Fase 1</span><span class="tag t-warn">Próxima</span><h3>Validar com dados reais</h3><ul><li>Rodar sobre as planilhas reais de consolidação</li><li>Medir a linha de base por tipo de divergência</li><li>Validar limites e regras com a analista</li></ul></li>
+        <li class="reveal"><span class="ph">Fase 2</span><span class="tag t-neutral">Planejada</span><h3>Piloto em ciclo real</h3><ul><li>Um ou mais meses de operação em paralelo à planilha</li><li>Decisão de tecnologia e armazenamento comum</li><li>Metas numéricas de sucesso do MVP</li></ul></li>
+        <li class="reveal"><span class="ph">Fase 3</span><span class="tag t-neutral">Planejada</span><h3>Escalar e integrar</h3><ul><li>Gate SIB automático com a base de vidas</li><li>Geração dos XMLs RPI e RPA</li><li>Acesso com login e histórico compartilhado</li></ul></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Evidências -->
+  <section class="sec" id="evidencias" aria-labelledby="h-ev">
+    <div class="wrap">
+      <p class="kicker reveal">Base da proposta</p>
+      <h2 class="reveal" id="h-ev">Construído a partir do processo real</h2>
+      <ol class="ev">
+        <li class="reveal"><time datetime="2026-08-14">14/08/2026</time><h3>Entrevista de processo</h3><p>2h32 de imersão no fluxo ANS × rede com a responsável técnica pela interface: regra dos 3 meses, canais de XML e exclusão só pela plataforma da ANS.</p></li>
+        <li class="reveal"><time datetime="2026-08-19">19/08/2026</time><h3>Entrevista de gestão</h3><p>Dores da coordenação de cadastro: nenhum indicador e nenhum monitoramento contínuo.</p></li>
+        <li class="reveal"><time datetime="2026-08-27">27/08/2026</time><h3>Quantificação da dor</h3><p>Volumetria de 20 meses e a chave composta (“se qualquer uma mudar, é B.O.”).</p></li>
+        <li class="reveal"><time datetime="2026-10-06">06/10/2026</time><h3>Simulação do processo</h3><p>Cruzamento, triagem, fechamento, indicadores e regras parametrizáveis simulados com dados fictícios, ainda sem validação com dados reais.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Pedido -->
+  <section class="sec ask" id="pedido" aria-labelledby="h-ask">
+    <div class="wrap">
+      <p class="kicker">O que precisamos</p>
+      <h2 id="h-ask">Quatro decisões destravam a próxima fase</h2>
+      <p class="lead">Menos planilha, mais segurança: a rede que vendemos é a rede que funciona.</p>
+      <ol class="asks">
+        <li><h3>Acesso às bases reais</h3><p>As planilhas de consolidação e as cargas do RPS Total e do RPSWEB para a validação.</p></li>
+        <li><h3>Tempo da analista</h3><p>Algumas horas para validar regras e limites e para medir a linha de base.</p></li>
+        <li><h3>Decisão de tecnologia</h3><p>Onde o Radar vai rodar e guardar o histórico compartilhado.</p></li>
+        <li><h3>Patrocínio do piloto</h3><p>Um ciclo mensal em paralelo à planilha, com metas combinadas.</p></li>
+      </ol>
+      <div class="cta" style="margin-top:2rem"><a class="btn btn-lime" href="dashboard/">Abrir a simulação</a></div>
+    </div>
+  </section>
+
+  <!-- Perguntas frequentes (mesmo conteúdo de apresentacao/perguntas-frequentes.md, sem as notas internas da equipe) -->
+  <section class="sec" id="perguntas" aria-labelledby="h-faq">
+    <div class="wrap">
+      <p class="kicker reveal">Perguntas frequentes</p>
+      <h2 class="reveal" id="h-faq">O que costumam perguntar sobre o Radar</h2>
+      <p class="lead reveal">Respostas curtas, com os detalhes a um clique. Os números citados estão nas seções acima, com a fonte de cada um.</p>
+      <div class="faq reveal">
+        <details>
+          <summary>Por que não comprar uma solução pronta do mercado?</summary>
+          <div class="a">
+            <p class="short">As soluções que olhamos, como o Blendus, são fortes em TISS e IDSS, mas não tratam da integridade da rede assistencial, que é o problema que trouxemos. O Radar começa exatamente onde o mercado não atua.</p>
+            <ul>
+              <li>Trabalha com as bases que a área já usa (RNP e RPSWEB) e com as regras do próprio processo da operadora, como a estabilização de três meses e a chave composta.</li>
+              <li>A escolha de tecnologia é uma das quatro decisões pedidas. Comprar, construir ou integrar ao sistema de gestão continuam sendo opções.</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>Quanto custa e qual é o retorno?</summary>
+          <div class="a">
+            <p class="short">A primeira fase custa algumas dezenas de horas de trabalho interno, sem licença nem servidor. O retorno será medido com dados reais, em vez de prometido.</p>
+            <ul>
+              <li>Até aqui, o desembolso foi praticamente zero: só o tempo da equipe.</li>
+              <li>A estimativa anterior de ROI está em revisão, porque contava economias que a equipe já obtém e premissas sem fonte.</li>
+              <li>O valor tem três frentes: exposição regulatória (comprovada), taxas evitadas (em validação) e tempo da analista (a medir).</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>A multa de R$ 100 mil a R$ 1 milhão é um risco real?</summary>
+          <div class="a">
+            <p class="short">Sim. Ela está prevista na regra da ANS para quando a rede praticada difere da registrada, e quem responde é a operadora que contrata o hospital.</p>
+            <ul>
+              <li>Mesmo sem a multa direta, a divergência já custa: ofícios da ANS para responder, taxas por produto alterado (cerca de R$ 1.400 cada) e retrabalho.</li>
+              <li>Uma exclusão que atinge muitos produtos gera uma taxa por produto, e o valor cresce rápido.</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>O que existe de concreto hoje?</summary>
+          <div class="a">
+            <p class="short">O processo mapeado, as regras documentadas e uma simulação do ciclo completo com dados fictícios. Ela ainda não rodou com dados reais e as regras não foram validadas.</p>
+            <ul>
+              <li>A simulação usa uma base fictícia de 2.502 hospitais e 9 meses, no mesmo formato dos arquivos da área.</li>
+              <li>Rodar sobre as planilhas reais é a fase 1, que depende do acesso às bases e de horas da analista.</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>De onde vêm os números?</summary>
+          <div class="a">
+            <p class="short">Das entrevistas com a área e das planilhas e históricos que ela usa hoje.</p>
+            <ul>
+              <li>2.502 hospitais e 2 a 3 meses para regularizar: documentação do projeto.</li>
+              <li>~487 mil linhas em 3 planilhas de controle: análise das planilhas de consolidação.</li>
+              <li>851 movimentos em 20 meses: levantamento com a área de cadastro.</li>
+                            <li>Ainda não medidos: o tempo gasto hoje na conferência e as divergências por mês. Saem da linha de base da fase 1.</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>Quanto tempo a analista vai economizar?</summary>
+          <div class="a">
+            <p class="short">O número exato ainda será medido. Hoje a conferência é 100% manual, linha a linha; com o Radar, a analista passa a trabalhar só a fila de casos que pedem ação.</p>
+            <ul>
+              <li>A medição das horas atuais faz parte da fase 1 (linha de base).</li>
+              <li>O ganho também está em não deixar passar casos: hoje, entre uma mudança na rede e o ajuste na ANS, passam de 2 a 3 meses.</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>E se o Radar errar?</summary>
+          <div class="a">
+            <p class="short">Ele não decide nada sozinho. Aponta o que está diferente, explica o motivo e sugere a ação. A analista confirma cada caso, com um checklist, antes de qualquer envio à ANS.</p>
+            <ul>
+              <li>O piloto roda em paralelo à planilha justamente para comparar os resultados e calibrar as regras.</li>
+              <li>As regras ficam num arquivo único, com a fonte de cada uma e o histórico de mudanças.</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>Os dados estão seguros? E a LGPD?</summary>
+          <div class="a">
+            <p class="short">Na simulação, os arquivos são lidos no próprio computador e não são enviados a nenhum servidor. Os dados são de prestadores (CNPJ, CNES, nome do hospital), não de beneficiários.</p>
+            <ul>
+              <li>Controle de acesso com login e perfis depende da decisão de tecnologia, que é um dos pedidos.</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>Por que começar só pela rede hospitalar?</summary>
+          <div class="a">
+            <p class="short">Porque é onde está o maior risco: são 2.502 hospitais, a multa é por hospital e a ANS tem regra específica para mudar a rede hospitalar. Um escopo menor permite provar o valor rápido.</p>
+            <ul>
+              <li>A mesma lógica de comparação pode se estender a outros prestadores depois.</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>Quando teremos resultado?</summary>
+          <div class="a">
+            <p class="short">Com o acesso às bases e algumas horas da analista, a fase 1 roda um mês real e compara com a conferência manual. É a primeira prova com dados reais, pequena e reversível.</p>
+            <ul>
+              <li>As datas das fases 2 e 3 dependem das quatro decisões e do resultado da fase 1.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Glossário (mesmo conteúdo de apresentacao/glossario.md) -->
+  <section class="sec alt" id="glossario" aria-labelledby="h-glos">
+    <div class="wrap">
+      <p class="kicker reveal">Glossário</p>
+      <h2 class="reveal" id="h-glos">As siglas e os termos, em linguagem simples</h2>
+      <p class="lead reveal">Para quem não é da área de saúde suplementar.</p>
+      <div class="glos-search reveal">
+        <label class="sr" for="glos-q">Buscar no glossário</label>
+        <input id="glos-q" type="search" placeholder="Buscar termo ou sigla, por exemplo CNES" autocomplete="off">
+        <span class="glos-count" id="glos-count" aria-live="polite"></span>
+      </div>
+      <div class="glos">
+        <div class="card glos-group reveal">
+          <h3>Quem é quem</h3>
+          <dl>
+            <div><dt>ANS</dt><dd>Agência Nacional de Saúde Suplementar. O órgão do governo que regula os planos de saúde: registra quais hospitais fazem parte de cada plano, fiscaliza, envia ofícios e aplica multas.</dd></div>
+            <div><dt>Beneficiário</dt><dd>A pessoa que tem o plano de saúde (o cliente). Também chamado de "vida".</dd></div>
+            <div><dt>Blendus</dt><dd>Solução de mercado para gestão regulatória, citada no levantamento da equipe como comparação.</dd></div>
+            <div><dt>DATASUS</dt><dd>Departamento de Informática do SUS. Mantém o CNES, o cadastro público de hospitais e clínicas.</dd></div>
+            <div><dt>Operadora</dt><dd>A empresa que vende e administra o plano de saúde.</dd></div>
+            <div><dt>Operadora intermediária</dt><dd>A Unimed que faz a ponte entre a operadora e o hospital quando o contrato com o hospital é dela. Aparece no registro da ANS.</dd></div>
+            <div><dt>Prestador</dt><dd>Quem presta o atendimento: hospital, clínica, laboratório. Neste projeto, o foco são os hospitais.</dd></div>
+            <div><dt>Sistema Unimed</dt><dd>O conjunto de cooperativas Unimed do país, que atendem os beneficiários umas das outras.</dd></div>
+            <div><dt>TOTVS</dt><dd>O sistema de gestão (ERP) usado pela operadora para administrar os planos.</dd></div>
+            <div><dt>Unimed singular</dt><dd>Cooperativa Unimed local, de uma cidade ou região. Na rede indireta, é ela quem tem o contrato com o hospital.</dd></div>
+          </dl>
+        </div>
+        <div class="card glos-group reveal">
+          <h3>A rede de hospitais</h3>
+          <dl>
+            <div><dt>Contratação direta</dt><dd>Quando a operadora contrata o hospital ela mesma, sem a singular no meio. Nesse caso, o risco de multa é dela.</dd></div>
+            <div><dt>Produto</dt><dd>Cada plano de saúde registrado na ANS. Um mesmo hospital pode estar em dezenas ou centenas de produtos.</dd></div>
+            <div><dt>Rede assistencial</dt><dd>O conjunto de hospitais, clínicas e laboratórios que atendem os beneficiários de um plano.</dd></div>
+            <div><dt>Rede direta</dt><dd>Hospitais contratados pela própria operadora.</dd></div>
+            <div><dt>Rede divulgada</dt><dd>A lista de hospitais que as Unimeds publicam no RNP. É a rede que o beneficiário encontra.</dd></div>
+            <div><dt>Rede indireta</dt><dd>Hospitais contratados por uma Unimed singular e oferecidos nos planos da operadora por meio dela. Hoje, a multa nesses casos é responsabilidade da singular.</dd></div>
+            <div><dt>Rede praticada</dt><dd>Onde o beneficiário de fato é atendido, na prática.</dd></div>
+            <div><dt>Rede registrada</dt><dd>A lista de hospitais que a operadora declarou à ANS para cada plano.</dd></div>
+          </dl>
+        </div>
+        <div class="card glos-group reveal">
+          <h3>Cadastros, bases e sistemas</h3>
+          <dl>
+            <div><dt>Base</dt><dd>Um arquivo ou planilha com dados. O Radar trabalha com duas: a da rede divulgada (RNP) e a da rede registrada (RPSWEB).</dd></div>
+            <div><dt>Carga</dt><dd>Cada atualização mensal da base do RNP. "Ausente há duas cargas" quer dizer que o hospital sumiu nas duas últimas atualizações.</dd></div>
+            <div><dt>CNES</dt><dd>Cadastro Nacional de Estabelecimentos de Saúde. O "RG" de cada hospital ou clínica, com 7 dígitos, mantido pelo DATASUS.</dd></div>
+            <div><dt>CNPJ</dt><dd>O cadastro da empresa na Receita Federal. Um mesmo CNPJ pode ter várias unidades, cada uma com seu CNES.</dd></div>
+            <div><dt>Competência</dt><dd>O mês de referência de uma base, por exemplo "ago/26".</dd></div>
+            <div><dt>PTU</dt><dd>Padrão de troca de informações entre as Unimeds. Define o formato dos arquivos que elas trocam.</dd></div>
+            <div><dt>PTU A400</dt><dd>O arquivo do PTU com o cadastro dos prestadores. É dele que sai a rede divulgada no RNP.</dd></div>
+            <div><dt>RNP</dt><dd>Rede Nacional de Prestadores. Onde as Unimeds publicam os prestadores que atendem. É a lista que o beneficiário encontra.</dd></div>
+            <div><dt>RPS Total</dt><dd>A extração mensal completa do RNP. Nove meses empilhados somam cerca de 233 mil linhas; com as outras duas planilhas de controle, cerca de 487 mil.</dd></div>
+            <div><dt>RPSWEB</dt><dd>O sistema da ANS onde fica registrada a rede de cada produto. De lá se exporta a "foto da ANS".</dd></div>
+            <div><dt>SIB</dt><dd>Sistema de Informações de Beneficiários da ANS. Mostra quantos beneficiários ("vidas") cada produto tem.</dd></div>
+          </dl>
+        </div>
+        <div class="card glos-group reveal">
+          <h3>Envios e regras da ANS</h3>
+          <dl>
+            <div><dt>Ofício</dt><dd>Comunicado formal da ANS pedindo explicações, por exemplo sobre rede divergente.</dd></div>
+            <div><dt>PTA</dt><dd>Programa Transmissor de Arquivos da ANS, também chamado pela área de Protocolo de Transmissão de Arquivos. Por onde se enviam os XMLs de mudança na rede.</dd></div>
+            <div><dt>RN</dt><dd>Resolução Normativa: uma regra publicada pela ANS.</dd></div>
+            <div><dt>RN 585</dt><dd>Resolução da ANS sobre alterações na rede hospitalar, como substituir ou excluir hospitais. Precisa ser seguida antes de uma exclusão.</dd></div>
+            <div><dt>RPA · RPE · RPI · RPV</dt><dd>Arquivos XML enviados pelo PTA: alteração (RPA), exclusão (RPE), inclusão (RPI) e vínculo a um produto (RPV).</dd></div>
+            <div><dt>Taxa por produto alterado</dt><dd>Cerca de R$ 1.400 cobrados a cada produto afetado por uma mudança na rede. Incluir hospital em produto sem beneficiários gera a taxa sem benefício.</dd></div>
+            <div><dt>XML</dt><dd>Formato de arquivo padronizado que a ANS exige para receber mudanças na rede.</dd></div>
+          </dl>
+        </div>
+        <div class="card glos-group reveal">
+          <h3>Riscos e consequências</h3>
+          <dl>
+            <div><dt>Divergência</dt><dd>Diferença entre a rede registrada na ANS e a rede divulgada, como um CNES diferente ou um hospital que está numa lista e não na outra.</dd></div>
+            <div><dt>Glosa</dt><dd>Recusa de pagamento de uma conta de atendimento por inconsistência de cadastro ou de regra.</dd></div>
+            <div><dt>Multa potencial</dt><dd>De R$ 100 mil a R$ 1 milhão por hospital quando a rede praticada difere da registrada. Recai sobre a operadora que contrata o hospital.</dd></div>
+            <div><dt>Negativa de atendimento</dt><dd>Quando o beneficiário procura um hospital da rede e não é atendido, por exemplo por cadastro bloqueado ou desatualizado.</dd></div>
+          </dl>
+        </div>
+        <div class="card glos-group reveal">
+          <h3>Termos do Radar</h3>
+          <dl>
+            <div><dt>Aderência</dt><dd>O percentual da rede registrada na ANS que bate com a rede divulgada, sem divergência. O principal indicador do Radar.</dd></div>
+            <div><dt>Chave composta</dt><dd>Os dados que identificam um hospital no registro: código da Unimed, CNPJ, CNES e operadora intermediária. Se qualquer um muda, o registro precisa mudar.</dd></div>
+            <div><dt>Checklist</dt><dd>Lista do que conferir antes de decidir cada caso, como "CNES ativo" ou "documentação lida".</dd></div>
+            <div><dt>Ciclo mensal</dt><dd>A rotina de cada mês: carregar as bases, comparar, priorizar e fechar com as decisões registradas.</dd></div>
+            <div><dt>Estabilização</dt><dd>Regra da área: um hospital novo só entra na ANS depois de aparecer três meses seguidos na rede divulgada.</dd></div>
+            <div><dt>Fila de triagem</dt><dd>A lista de casos que pedem ação, organizada por prioridade, no lugar da conferência linha a linha.</dd></div>
+            <div><dt>Linha de base</dt><dd>A medição de como o processo está hoje, para comparar depois e provar o ganho.</dd></div>
+            <div><dt>Passivo de higienização</dt><dd>Hospitais ativos na ANS que não aparecem na rede divulgada há meses. Candidatos a limpeza do registro.</dd></div>
+            <div><dt>Piloto</dt><dd>Uso do Radar em um ciclo real, em paralelo à planilha, para comparar os resultados.</dd></div>
+            <div><dt>Regras parametrizáveis</dt><dd>Prazos, campos comparados e checklists que a área ajusta sem programação.</dd></div>
+            <div><dt>Simulação do processo</dt><dd>O que existe hoje do Radar: uma demonstração do ciclo completo com dados fictícios, ainda sem validação com dados reais.</dd></div>
+          </dl>
+        </div>
+        <div class="card glos-group reveal">
+          <h3>Método e ferramentas</h3>
+          <dl>
+            <div><dt>CSV</dt><dd>Formato simples de planilha, que abre no Excel.</dd></div>
+            <div><dt>ERP</dt><dd>Sistema integrado de gestão da empresa. Aqui, o TOTVS.</dd></div>
+            <div><dt>LGPD</dt><dd>Lei Geral de Proteção de Dados. A simulação lê os arquivos no próprio computador, sem enviá-los a servidores.</dd></div>
+            <div><dt>MVP</dt><dd>Produto mínimo viável: a primeira versão com o essencial para provar valor.</dd></div>
+            <div><dt>PROCV</dt><dd>Função do Excel usada hoje para cruzar as planilhas à mão.</dd></div>
+            <div><dt>ROI</dt><dd>Retorno sobre o investimento. A estimativa anterior está em revisão e será refeita com a linha de base da fase 1.</dd></div>
+            <div><dt>Six Lean Sigma</dt><dd>Método de melhoria de processos que combina eliminação de desperdício (Lean) e redução de erros (Six Sigma).</dd></div>
+          </dl>
+        </div>
+      </div>
+      <p class="glos-empty" id="glos-empty" hidden>Nenhum termo encontrado. Tente uma sigla, como ANS ou CNES.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Radar de Integridade Assistencial · Projeto Transforma · Certificação Six Lean Sigma</span>
+    <span>Números das entrevistas e da documentação do projeto. Telas com dados fictícios.</span>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+</body>
+</html>
