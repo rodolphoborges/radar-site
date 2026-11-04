@@ -357,5 +357,6 @@ html.fly .fly-back.fly-on { display: block; position: sticky; top: calc(64px + e
 .member .avatar { width: 84px; height: 84px; border-radius: 50%; margin: 0 auto .9rem; display: grid; place-items: center; object-fit: cover; background: var(--brand); color: #fff; font: 700 1.5rem var(--f-display); border: 3px solid var(--lime); }
 .member h3 { font-size: 1.08rem; margin: 0 0 .15rem; color: var(--heading); }
 .member .role { margin: 0 0 .6rem; font-size: .85rem; font-weight: 600; color: var(--accent-ink); }
+.member .area { display: block; font-weight: 500; color: var(--ink-2); font-size: .8rem; margin-top: .1rem; }
 .member p:last-child { margin: 0; font-size: .92rem; color: var(--ink-2); }
 @media (max-width: 760px) { .team { grid-template-columns: repeat(4, 1fr); gap: .7rem; } .team .member { grid-column: span 2; } .member { padding: 1.1rem .8rem; } .member .avatar { width: 64px; height: 64px; font-size: 1.15rem; } .member p:last-child { font-size: .84rem; } .team .member:last-child:nth-child(odd) { grid-column: 2 / span 2; } }
